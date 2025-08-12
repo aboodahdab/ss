@@ -2,9 +2,9 @@ import argparse
 
 
 #  i will write everything i have seen from internet iwill not use ai but maybe some internet#
-normal = "abood.txt"
-contatcs = "contatcs.txt"
-scoreboardFile = "scoreboard.txt"
+NORMAL = "abood.txt"
+CONTACTS = "contatcs.txt"
+SCOREBOARDFILE = "scoreboard.txt"
 
 
 def readFile(filename):
@@ -28,8 +28,8 @@ def show(data):
 
 def addItemToShoplist(value, ):
     # i saw file word in 17 line of code from my other python file so i know what it does but i forgot it okay ?counts as ai
-    with open(normal, "a") as file:
-        if readFile(normal) == []:
+    with open(NORMAL, "a") as file:
+        if readFile(NORMAL) == []:
             file.write(f"{value}")
             return
         file.write(f"\n{value}")
@@ -37,10 +37,10 @@ def addItemToShoplist(value, ):
 
 def add_a_new_score(obj, ):
     # i saw file word in 17 line of code from my other python file so i know what it does but i forgot it okay ?counts as ai
-    with open(scoreboardFile, "a") as file:
+    with open(SCOREBOARDFILE, "a") as file:
         for key, value in obj.items():
             print(key, value)
-            if readFile(scoreboardFile) == []:
+            if readFile(SCOREBOARDFILE) == []:
                 file.write(f"{key}:{value}")
                 return
             file.write(f"\n{key}:{value}")
@@ -61,8 +61,8 @@ def remove_line(line, filename):
 
 def add_a_new_contact(name, value):
     # i saw file word in 17 line of code from my other python file so i know what it does but i forgot it okay ?counts as ai
-    with open(contatcs, "a") as file:
-        if readFile(contatcs) == []:
+    with open(CONTACTS, "a") as file:
+        if readFile(CONTACTS) == []:
             print("hello", name, value)
             file.write(f"{name}:{value}")
             return
@@ -76,19 +76,19 @@ def handle(args):
     if command == "read":
         if args.choices == "contacts":
 
-            show(readFile(contatcs))
+            show(readFile(CONTACTS))
             return
 
-        show(readFile(normal))
+        show(readFile(CONTACTS))
     if command == "contacts":
 
         add_a_new_contact(args.name, args.phoneNum)
 
     if command == "remove":
         if args.choices == "contacts":
-            remove_line(args.line, contatcs)
+            remove_line(args.line, CONTACTS)
             return
-        remove_line(args.line, normal)
+        remove_line(args.line, NORMAL)
     if command == "shoplist":
         addItemToShoplist(args.ingredient, )
 
