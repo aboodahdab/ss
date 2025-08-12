@@ -2,36 +2,44 @@ import argparse
 
 
 #  i will write everything i have seen from internet iwill not use ai but maybe some internet#
+normal = "abood.txt"
+contatcs = "contatcs.txt"
 
 
 def readFile(filename):
     # i saw  file word in 17 line of code from my other python file so i know what it does but i forgot it okay ? counts as ai
-    with open(filename, "r") as file:
-        if file.readlines() == []:
-            print("nothing to print")
-        return file.readlines()
+    try:
+        with open(f"{filename}", "r") as file:
+
+            return file.readlines()
+    except FileNotFoundError as e:
+        print(e)
+        return []
 
 
 def show(data):
+    if data == []:
+        print("nothing to show")
+        return
     for i, v in enumerate(data):
         print(i, v)
 
 
-def addItemToShoplist(value):
+def addItemToShoplist(value, ):
     # i saw file word in 17 line of code from my other python file so i know what it does but i forgot it okay ?counts as ai
-    with open("abood.txt", "a") as file:
-        if readFile("abood.txt") == []:
+    with open(normal, "a") as file:
+        if readFile("abood") == []:
             file.write(f"{value}")
             return
         file.write(f"\n{value}")
 
 
-def add_a_new_score(obj):
+def add_a_new_score(obj, ):
     # i saw file word in 17 line of code from my other python file so i know what it does but i forgot it okay ?counts as ai
-    with open("abood.txt", "a") as file:
+    with open(f"{normal}", "a") as file:
         for key, value in obj.items():
             print(key, value)
-            if readFile("abood.txt") == []:
+            if readFile("abood") == []:
                 file.write(f"{key}:{value}")
                 return
             file.write(f"\n{key}:{value}")
@@ -52,38 +60,40 @@ def remove_line(line, filename):
 
 def add_a_new_contact(name, value):
     # i saw file word in 17 line of code from my other python file so i know what it does but i forgot it okay ?counts as ai
-    with open("contatcs.txt", "a") as file:
-        if readFile("contatcs.txt") == []:
+    with open(f"{contatcs}", "a") as file:
+        if readFile(contatcs) == []:
+            print("hello", name, value)
             file.write(f"{name}:{value}")
             return
+        print("hello")
         file.write(f"\n{name}:{value}")
 
 
 def handle(args):
     command = args.command
-    filename = "abood.txt"
+
     if command == "read":
         if args.choices == "contacts":
-            filename = "contatcs.txt"
-            show(readFile(filename))
+
+            show(readFile(contatcs))
             return
 
-        show(readFile(filename))
+        show(readFile(normal))
     if command == "contacts":
+
         add_a_new_contact(args.name, args.phoneNum)
 
     if command == "remove":
         if args.choices == "contacts":
-            filename = "contatcs.txt"
-            remove_line(args.line, filename)
+            remove_line(args.line, contatcs)
             return
-        filename = "abood.txt"
-        remove_line(args.line, filename)
+        remove_line(args.line, normal)
     if command == "shoplist":
-        addItemToShoplist(args.ingredient)
+        addItemToShoplist(args.ingredient, )
 
     if command == "scoreboard":
-        add_a_new_score({f"{args.name}": args.value})
+
+        add_a_new_score({f"{args.name}": args.value}, )
 
 
 if __name__ == "__main__":
