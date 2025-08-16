@@ -1,59 +1,51 @@
-Assessment: Tic-Tac-Toe with AI Opponent
-Objective
+# 📝 Advanced Assessment: Mini Personal AI Assistant
 
-Build a complete Tic-Tac-Toe game in Python that:
+## Objective
+Build a Python program that acts like a simple AI assistant. It should:
 
-Lets the player choose to play against another human or the computer.
+- Take text input from the user.
+- Respond to commands intelligently.
+- Save and load user preferences (like name, favorite color, or favorite game).
+- Keep a simple history of conversations.
 
-Shows the board after every move.
+---
 
-Saves and loads the scoreboard from a file.
+## Core Requirements
 
-Uses functions to keep the code organized.
+### 1. Command Handling
+The assistant should understand commands like:
 
-Requirements
-Game Logic
+- `my name is <name>` → store the name
+- `what is my name?` → respond with the stored name
+- `add <item> to shopping list` → update a list
+- `show shopping list` → display the list
+- `add score <number> for <game>` → update a scoreboard
+- `show scores` → display scoreboard
 
-3×3 grid board
+### 2. Data Management
+- Use **dictionaries and lists** to store user data and scores.
+- Save everything to a **JSON file** so it persists between runs.
+- Load the data at startup.
 
-Player 1 = "X", Player 2 (or computer) = "O"
+### 3. Conversation History
+- Store the last 10 interactions in a list.
+- Save history to a file so it can be reviewed later.
 
-Check for winner or draw
+### 4. Functions & Modules
+Organize code with functions for each feature:
 
-Replay option (play multiple games in one run)
+- `handle_name()`
+- `handle_shopping()`
+- `handle_scores()`
+- `save_data()` and `load_data()`
 
-Scoreboard
+Optional: split into multiple files (modules) for better structure.
 
-Keep track of wins, losses, draws
+### 5. Extra Challenges (Optional for Bonus)
+- Add **simple AI responses**:
+  - If user says “hello”, respond “Hi! How are you?”
+  - If user asks “what can you do?”, list available commands.
+- Use **random choices** for varied responses.
+- Make the assistant **case-insensitive**.
+- Add **basic math ability** (like `what is 5 + 7`).
 
-Save scoreboard to a file (tictactoe_scores.txt)
-
-Load it at the start of the program
-
-Functions
-
-At least these functions:
-
-print_board(board) → display the current board
-
-check_winner(board) → check if X or O won
-
-player_move(board) → ask user for move
-
-computer_move(board) → simple AI (random free spot)
-
-save_scores(scores) and load_scores() → file handling
-
-Computer Opponent (AI)
-
-Level 1: Pick a random available spot
-
-Bonus Challenge: Block the player’s winning move if possible
-
-Extra Challenges (Optional, for bonus points)
-
-Make the computer try to win (not just block).
-
-Add colored output (green for win, red for loss, yellow for draw).
-
-Let the player choose grid size (3×3, 4×4, etc.).
